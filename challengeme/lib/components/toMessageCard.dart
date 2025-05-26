@@ -30,7 +30,11 @@ class ToMessageCard extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            Text(DateFormat.Hm().format(DateTime.parse(message.time))),
+            Text(
+              DateFormat.Hm().format(
+                DateTime.parse(message.time).toLocal(),
+              ),
+            ),
           ],
         ),
       ),

@@ -47,7 +47,11 @@ class FromMessageCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(DateFormat.Hm().format(DateTime.parse(message.time))),
+              Text(
+                DateFormat.Hm().format(
+                  DateTime.parse(message.time).toLocal(),
+                ),
+              ),
             ],
           )),
     );

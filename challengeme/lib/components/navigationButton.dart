@@ -6,14 +6,16 @@ class NavigationButton extends StatelessWidget {
   final String route;
   final double width;
   final double height;
+  final double fontSize;
 
   const NavigationButton(
       {Key? key,
       required this.imagePath,
       required this.label,
       required this.route,
-      this.width = 150,
-      this.height = 150})
+      this.fontSize = 15,
+      this.width = 120,
+      this.height = 120})
       : super(key: key);
 
   @override
@@ -27,14 +29,6 @@ class NavigationButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: Color(0xFFDFDFDF),
           borderRadius: BorderRadius.circular(10),
-          // boxShadow: const [
-          //   BoxShadow(
-          //     color: Colors.black26,
-          //     offset: Offset(0, 4),
-          //     blurRadius: 20,
-          //     spreadRadius: 2,
-          //   ),
-          // ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,10 +36,10 @@ class NavigationButton extends StatelessWidget {
             Text(
               label,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 20,
+              style: TextStyle(
+                fontSize: fontSize,
                 fontFamily: "Poppins",
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
                 fontWeight: FontWeight.bold,
               ),
             ),

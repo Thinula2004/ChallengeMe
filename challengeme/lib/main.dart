@@ -3,6 +3,7 @@ import 'package:challengeme/services/sessionService.dart';
 import 'package:challengeme/views/challengeList.dart';
 import 'package:challengeme/views/challengeSingle.dart';
 import 'package:challengeme/views/chatView.dart';
+import 'package:challengeme/views/diet_page.dart';
 import 'package:challengeme/views/home.dart';
 import 'package:challengeme/views/inquiryList.dart';
 import 'package:challengeme/views/login.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
       '/specialists',
       '/chat',
       '/specialistHome',
-      '/inquiries'
+      '/inquiries',
+      '/diet'
     };
 
     final user =
@@ -108,6 +110,8 @@ class MyApp extends StatelessWidget {
               case '/inquiries':
                 return MaterialPageRoute(
                     builder: (_) => const InquiryListView());
+              case '/diet':
+                return MaterialPageRoute(builder: (_) => const DietPage());
               default:
                 return MaterialPageRoute(builder: (_) => const LoginView());
             }

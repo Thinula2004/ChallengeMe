@@ -62,6 +62,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
                   case 'specialists':
                     Navigator.pushNamed(context, '/specialists');
                     break;
+                  case 'diet':
+                    Navigator.pushNamed(context, '/diet');
+                    break;
                   case 'logout':
                     _logout(context);
                     break;
@@ -79,6 +82,10 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
                 const PopupMenuItem<String>(
                   value: 'specialists',
                   child: Text('Specialists'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'diet',
+                  child: Text('Diet Plan'),
                 ),
                 const PopupMenuDivider(),
                 const PopupMenuItem<String>(
