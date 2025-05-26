@@ -75,6 +75,7 @@ class _SpecialistHomeViewState extends State<SpecialistHomeView> {
               route: '/inquiries',
               width: 230,
               height: 180,
+              fontSize: 20,
             ),
           ],
         ),

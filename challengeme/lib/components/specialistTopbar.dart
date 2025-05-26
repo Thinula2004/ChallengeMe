@@ -58,7 +58,7 @@ class SpecialistTopBar extends StatelessWidget implements PreferredSizeWidget {
                     Navigator.pushNamed(context, '/specialistHome');
                     break;
                   case 'inquiries':
-                    Navigator.pushNamed(context, '/challenges');
+                    Navigator.pushNamed(context, '/inquiries');
                     break;
                   case 'logout':
                     _logout(context);

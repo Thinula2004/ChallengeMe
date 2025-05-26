@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
             Center(
               child: Image.asset(
                 'lib/assets/fitness.png',
-                width: 200,
+                width: 250,
               ),
             ),
             const SizedBox(
@@ -118,12 +118,19 @@ class _HomeViewState extends State<HomeView> {
                     label: 'Challenges',
                     route: '/challenges'),
                 SizedBox(
-                  width: 40,
+                  width: 10,
                 ),
                 NavigationButton(
                     imagePath: 'lib/assets/specialist.png',
                     label: 'Specialists',
-                    route: '/specialists')
+                    route: '/specialists'),
+                SizedBox(
+                  width: 10,
+                ),
+                NavigationButton(
+                    imagePath: 'lib/assets/diet.png',
+                    label: 'Diet Plan',
+                    route: '/diet')
               ],
             )
           ],
