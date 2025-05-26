@@ -1,9 +1,14 @@
 import 'package:challengeme/components/button.dart';
 import 'package:challengeme/components/input_field.dart';
+import 'package:challengeme/models/user.dart';
 import 'package:challengeme/services/auth_service.dart';
+import 'package:challengeme/services/sessionService.dart';
 import 'package:challengeme/services/util.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
+
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -134,6 +139,16 @@ class _LoginState extends State<LoginView> {
 
       if (response.statusCode == 200) {
         showSuccess(context, 'Login Successful !');
+        print(response.body);
+        User user = User.fromJson(jsonDecode(response.body));
+        Provider.of<SessionService>(context, listen: false).saveUser(user);
+
+        if (user.role == 'user') {
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        } else {
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/specialistHome', (route) => false);
+        }
       } else {
         final error = jsonDecode(response.body);
         showWarning(context, error['error'] ?? 'Login failed');

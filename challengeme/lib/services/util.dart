@@ -24,3 +24,26 @@ void showSnackBar(BuildContext context, String msg, Color color) {
     backgroundColor: color,
   ));
 }
+
+Future<bool> showYesNoDialog(BuildContext context, String message) async {
+  final result = await showDialog<bool>(
+    context: context,
+    barrierDismissible: false, // Prevents dismissing by tapping outside
+    builder: (context) => AlertDialog(
+      title: const Text('Confirm'),
+      content: Text(message),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: const Text('No'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(true),
+          child: const Text('Yes'),
+        ),
+      ],
+    ),
+  );
+
+  return result ?? false;
+}
