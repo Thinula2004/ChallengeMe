@@ -57,7 +57,7 @@ class _SignupViewState extends State<SignupView> {
               InputField(
                 hint: 'Name',
                 width: screenWidth * 0.85,
-                hidden: true,
+                hidden: false,
                 tec: nameTEC,
               ),
               const SizedBox(height: 15),

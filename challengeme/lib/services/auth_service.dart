@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:challengeme/models/user.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
@@ -34,5 +36,56 @@ class AuthService {
     );
 
     return response;
+  }
+
+  Future<List<User>> loadUsers() async {
+    final url = Uri.parse('$baseUrl/users');
+
+    final response =
+        await http.get(url, headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode != 200) {
+      return [];
+    }
+
+    final List<dynamic> data = jsonDecode(response.body);
+    List<User> users = data.map((u) => User.fromJson(u)).toList();
+
+    return users;
+  }
+
+  Future<List<User>> loadSpecialists() async {
+    final url = Uri.parse('$baseUrl/specialists');
+
+    final response =
+        await http.get(url, headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode != 200) {
+      return [];
+    }
+
+    final List<dynamic> data = jsonDecode(response.body);
+    List<User> users = data.map((u) => User.fromJson(u)).toList();
+
+    return users;
+  }
+
+  Future<List<User>> loadTrainees(String specialistId) async {
+    try {
+      final url = Uri.parse('$baseUrl/inquiries/$specialistId');
+
+      final response = await http.get(url);
+
+      if (response.statusCode != 200) {
+        return [];
+      }
+      final List<dynamic> data = jsonDecode(response.body);
+      List<User> users = data.map((u) => User.fromJson(u)).toList();
+
+      return users;
+    } catch (e) {
+      print('Exception : $e');
+      return [];
+    }
   }
 }
